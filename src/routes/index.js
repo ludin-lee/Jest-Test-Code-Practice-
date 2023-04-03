@@ -1,0 +1,11 @@
+const { Router } = require('express');
+const { ApiError } = require('../utils/apiError');
+const { route } = require('./comments.route');
+const authRouter = require('./auth.route');
+const router = Router();
+const postsRouter = require('./posts.route.js');
+const CommentsRouter = require('./comments.route');
+router.use('/posts', [postsRouter]);
+router.use('/', CommentsRouter);
+router.use('/auth', authRouter);
+module.exports = router;
